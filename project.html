@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Doctor Portal</title>
+</head>
+<body>
+
+    <h1>Online Doctor Portal</h1>
+    <p>Your health, our priority</p>
+
+    <hr>
+
+    <h2>Navigation</h2>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#doctor">Doctor Login / Register</a></li>
+        <li><a href="#patient">Patient Login / Register</a></li>
+        <li><a href="#appointment">Book Appointment</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+    </ul>
+
+    <hr>
+
+    <section id="home">
+        <h2>Welcome</h2>
+        <p>Welcome to our online doctor portal. Book appointments, consult doctors, and stay healthy – all from the comfort of your home.</p>
+    </section>
+
+    <hr>
+
+    <section id="doctor">
+        <h2>Doctor Login / Register</h2>
+        <form>
+            <label>Doctor Name:</label><br>
+            <input type="text" name="doctorname" required><br>
+
+            <label>Email:</label><br>
+            <input type="email" name="doctoremail" required><br>
+
+            <label>Password:</label><br>
+            <input type="password" name="doctorpassword" required><br>
+
+            <label>Specialization:</label><br>
+            <select name="specialization">
+                <option>General Physician</option>
+                <option>Pediatrician</option>
+                <option>Cardiologist</option>
+            </select><br><br>
+
+            <input type="submit" value="Login / Register">
+        </form>
+    </section>
+
+    <hr>
+
+    <section id="patient">
+        <h2>Patient Login / Register</h2>
+        <form>
+            <label>Patient Name:</label><br>
+            <input type="text" name="patientname" required><br>
+
+            <label>Email:</label><br>
+            <input type="email" name="patientemail" required><br>
+
+            <label>Password:</label><br>
+            <input type="password" name="patientpassword" required><br><br>
+
+            <input type="submit" value="Login / Register">
+        </form>
+    </section>
+
+    <hr>
+
+    <section id="appointment">
+        <h2>Book an Appointment</h2>
+        <form>
+            <label>Full Name:</label><br>
+            <input type="text" name="fullname" required><br>
+
+            <label>Email:</label><br>
+            <input type="email" name="email" required><br>
+
+            <label>Preferred Date:</label><br>
+            <input type="date" name="date" required><br>
+
+            <label>Select Doctor:</label><br>
+            <select name="doctor">
+                <option>Dr. Smith (Cardiologist)</option>
+                <option>Dr. Emma (General Physician)</option>
+            </select><br>
+
+            <label>Describe Your Problem:</label><br>
+            <textarea name="problem" rows="4" cols="30"></textarea><br><br>
+
+            <input type="submit" value="Book Appointment">
+        </form>
+    </section>
+
+    <hr>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: support@doctornow.com</p>
+        <p>Phone: +91 9876543210</p>
+    </section>
+
+    <hr>
+
+    <footer>
+        <p>&copy; 2025 Online Doctor Portal. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
