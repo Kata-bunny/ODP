@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up - Doctor Portal</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1f4f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      height: 100vh;
+    }
+
+    .left-panel {
+      flex: 1;
+      background: #072d5e;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+    }
+
+    .left-panel img {
+      width: 80%;
+      max-width: 300px;
+      margin-bottom: 20px;
+    }
+
+    .right-panel {
+      flex: 1;
+      background: white;
+      padding: 40px;
+      overflow-y: auto;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    form label {
+      display: inline-block;
+      width: 150px;
+      font-weight: bold;
+    }
+
+    form input, form select {
+      width: 60%;
+      padding: 8px;
+      margin: 10px 0;
+    }
+
+    .form-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background: #1c3f94;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    button:hover {
+      background: #163478;
+    }
+
+    .bottom-text {
+      margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .left-panel, .right-panel {
+        width: 100%;
+        height: auto;
+      }
+
+      form label {
+        width: 100%;
+        margin-bottom: 5px;
+      }
+
+      form input, form select {
+        width: 100%;
+      }
+
+      .form-group {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <img src="https://img.freepik.com/free-vector/online-doctor-application_23-2148507417.jpg?w=900&t=st=1656631707~exp=1656632307~hmac=2eae44967f48bed5fa394995683d3556cdea8b48180443fec12623380fe9d93d" alt="Signup Illustration" />
+      <h2>Join Our Health Network</h2>
+      <p>Sign up now and book appointments easily with trusted doctors.</p>
+    </div>
+    <div class="right-panel">
+      <h2>Create an Account</h2>
+      <form action="/signup" method="post" id="signupForm">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+
+        <div class="form-group">
+          <label for="role">Role</label>
+          <select id="role" name="role" required>
+            <option value="">Select Role</option>
+            <option value="PATIENT">Patient</option>
+            <option value="DOCTOR">Doctor</option>
+            <option value="ADMIN">Admin</option>
+          </select>
+        </div>
+
+        <!-- Common Fields (for all except admin) -->
+        <div class="form-group" id="dobGroup" style="display:none;">
+          <label for="dob">Date of Birth</label>
+          <input type="date" id="dob" name="date_of_birth">
+        </div>
+
+        <div class="form-group" id="genderGroup" style="display:none;">
+          <label for="gender">Gender</label>
+          <select id="gender" name="gender">
+            <option value="">Select</option>
+            <option value="MALE">Male</option>
+            <option value="FEMALE">Female</option>
+            <option value="OTHER">Other</option>
+          </select>
+        </div>
+
+        <!-- Patient-only fields -->
+        <div class="form-group" id="bloodGroup" style="display: none;">
+          <label for="blood_group">Blood Group</label>
+          <input type="text" id="blood_group" name="blood_group">
+        </div>
+
+        <!-- Doctor-only fields -->
+        <div class="form-group" id="specializationGroup" style="display: none;">
+          <label for="specialization">Specialization</label>
+          <input type="text" id="specialization" name="specialization">
+        </div>
+
+        <div class="form-group" id="experienceGroup" style="display: none;">
+          <label for="experience_years">Experience (Years)</label>
+          <input type="number" id="experience_years" name="experience_years">
+        </div>
+
+        <div class="form-group" id="qualificationGroup" style="display: none;">
+          <label for="qualification">Qualification</label>
+          <input type="text" id="qualification" name="qualification">
+        </div>
+
+        <button type="submit">Sign Up</button>
+        <p class="bottom-text">Already have an account? <a href="login.html">Login</a></p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const roleSelect = document.getElementById('role');
+    const showElement = (id, show) => document.getElementById(id).style.display = show ? 'flex' : 'none';
+
+    roleSelect.addEventListener('change', function () {
+      const role = this.value;
+      const isDoctor = role === 'DOCTOR';
+      const isPatient = role === 'PATIENT';
+
+      showElement('dobGroup', isDoctor || isPatient);
+      showElement('genderGroup', isDoctor || isPatient);
+      showElement('bloodGroup', isPatient);
+
+      showElement('specializationGroup', isDoctor);
+      showElement('experienceGroup', isDoctor);
+      showElement('qualificationGroup', isDoctor);
+    });
+  </script>
+</body>
+</html>
